@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% if action == 'create' %}
+    {% set title = 'Create article'|trans %}
+{% else %}
+    {% set title = 'Update article'|trans %}
+{% endif %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <br>
+    <div class="container">
+        <div class="card bg-dark text-white">
+            <div class="card-header">
+                <h1>{{ title }}</h1>
+            </div>
+            <div class="card-body">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    <label for="article_title">{{ form_label(form.title) }}</label>
+                    {{ form_widget(form.title, {'attr': {'class': 'form-control' ~ (form_errors(form.title) ? ' is-invalid':''), 'id': 'article_title'}}) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.title)|striptags }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="article_author">{{ form_label(form.author) }}</label>
+                    {{ form_widget(form.author, {'attr': {'class': 'form-control' ~ (form_errors(form.author) ? ' is-invalid':''), 'id': 'article_author'}}) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.author)|striptags }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="article_image">{{ form_label(form.image) }}</label>
+                    {% if article.image and article.image.filename and article.image.filename|split('.').1 != 'tmp' %}
+                        <br>
+                        <img class="img-fluid img-thumbnail"
+                             src="{{ asset('uploads/article_images/' ~ article.image.filename) }}"/>
+                        <br>
+                        <br>
+                    {% endif %}
+                    <div class="custom-file{{ (form_errors(form.image) ? ' is-invalid':'') }}">
+                        <style>
+                            .custom-file .custom-file-label::after {
+                                content: "{{ 'Browse'|trans }}";
+                            }
+                        </style>
+                        {{ form_widget(form.image, {'attr': {'class': 'custom-file-input', 'id': 'article_image'}}) }}
+                        <label class="custom-file-label" for="customFile">{{ 'Choose image'|trans }}</label>
+                    </div>
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.image)|striptags }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="article_content">{{ form_label(form.content) }}</label>
+                    {{ form_widget(form.content, {'attr': {'class': 'form-control' ~ (form_errors(form.content) ? ' is-invalid':''), 'id': 'article_content', 'rows': "15"}}) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.content)|striptags }}
+                    </div>
+                </div>
+
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a class="btn btn-info" href="{{ path('article') }}">{{ 'To list'|trans }}</a>
+                    <button type="submit" class="btn btn-success">{{ 'Save'|trans }}</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

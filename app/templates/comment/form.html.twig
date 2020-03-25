@@ -1,0 +1,32 @@
+{% block body %}
+    <div class="container">
+        <div class="card bg-warning text-white">
+            <div class="card-header">
+                {% if action == 'create' %}
+                    {{ 'Create comment'|trans }}
+                {% else %}
+                    {{ 'Update comment'|trans }}
+                {% endif %}
+            </div>
+            <div class="card-body">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    <label for="comment_author">{{ form_label(form.author) }}</label>
+                    {{ form_widget(form.author, {'attr': {'class': 'form-control' ~ (form_errors(form.author) ? ' is-invalid':''), 'id': 'comment_author'}}) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.author)|striptags }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="comment_content">{{ form_label(form.content) }}</label>
+                    {{ form_widget(form.content, {'attr': {'class': 'form-control' ~ (form_errors(form.content) ? ' is-invalid':''), 'id': 'comment_content'}}) }}
+                    <div class="invalid-feedback">
+                        {{ form_errors(form.content)|striptags }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Save</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

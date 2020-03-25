@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Article'|trans }} {{ article.title }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>{{ 'Article'|trans }} {{ article.title }}</h1>
+
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                {% if article.image %}
+                    <img class="img-fluid img-thumbnail" src="{{ asset('uploads/article_images/' ~ article.image.filename) }}"/>
+                    <br>
+                    <br>
+                {% endif %}
+                <p><em><strong>{{ article.author }}</strong> | {{ 'Date'|trans }}: {{ article.createdAt|date("H:i d.m.Y") }}</em></p>
+                <div>{{ article.content }}</div>
+                <br>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a class="btn btn-info" href="{{ path('article') }}">{{ 'To list'|trans }}</a>
+                    <a class="btn btn-primary" href="{{ path('update_article', {'article': article.id}) }}">{{ 'Update'|trans }}</a>
+                    <a class="btn btn-danger" href="{{ path('delete_article', {'article': article.id}) }}">{{ 'Delete'|trans }}</a>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <h2>{{ 'Comments'|trans }}</h2>
+
+        {% for comment in article.comments %}
+            <div class="card bg-light text-black">
+                <div class="card-body">
+                    <h6>{{ comment.author }} | {{ 'Date'|trans }}: {{ comment.createdAt|date("H:i d.m.Y") }}</h6>
+                    <div>{{ comment.content }}</div>
+                    <br>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a class="btn btn-primary"
+                           href="{{ path('update_comment', {'article': article.id, 'comment': comment.id}) }}">{{ 'Update'|trans }}</a>
+                        <a class="btn btn-danger"
+                           href="{{ path('delete_comment', {'article': article.id, 'comment': comment.id}) }}">{{ 'Delete'|trans }}</a>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+        {% else %}
+            <p>{{ 'no comments found, please leave yore comment'|trans }}</p>
+        {% endfor %}
+    </div>
+
+    {{ render(controller('App\\Controller\\CommentController::create', {'article': article.id})) }}
+{% endblock %}

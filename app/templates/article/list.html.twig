@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'List of articles'|trans }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>{{ 'List of articles'|trans }}</h1>
+
+    <a class="btn btn-success" href="{{ path('create_article') }}">{{ 'Create article'|trans }}</a>
+
+    <br>
+    <br>
+
+    {% for article in pagination %}
+        <div class="card bg-dark text-white">
+            {% if article.image %}
+                <img class="card-img-top" src="{{ asset('uploads/article_images/' ~ article.image.filename) }}"/>
+            {% endif %}
+            <div class="card-header">
+                {{ 'Title'|trans }}: {{ article.title }}
+            </div>
+            <div class="card-body">
+                <div>{{ 'Author'|trans }}: {{ article.author }}</div>
+                <br>
+                <div>{{ 'Content'|trans }}:<br>{{ article.content }}</div>
+                <br>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a class="btn btn-info" href="{{ path('view_article', {'article': article.id}) }}">{{ 'Watch'|trans }}</a>
+                    <a class="btn btn-primary" href="{{ path('update_article', {'article': article.id}) }}">{{ 'Update'|trans }}</a>
+                    <a class="btn btn-danger" href="{{ path('delete_article', {'article': article.id}) }}">{{ 'Delete'|trans }}</a>
+                </div>
+            </div>
+        </div>
+        {% if not loop.last %}
+        <hr>
+        {% endif %}
+    {% else %}
+        <p>{{ 'no articles found'|trans }}</p>
+    {% endfor %}
+    <br>
+    <div class="navigation text-center">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+</div>
+{% endblock %}

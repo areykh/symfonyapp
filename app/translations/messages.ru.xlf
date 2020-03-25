@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="ARjBTvy" resname="List of articles">
+        <source>List of articles</source>
+        <target>Список статей</target>
+      </trans-unit>
+      <trans-unit id="pP5lJk7" resname="Language">
+        <source>Language</source>
+        <target>Язык</target>
+      </trans-unit>
+      <trans-unit id="_5LH44G" resname="En">
+        <source>En</source>
+        <target>Анг</target>
+      </trans-unit>
+      <trans-unit id="wVgUV1V" resname="Ru">
+        <source>Ru</source>
+        <target>Рус</target>
+      </trans-unit>
+      <trans-unit id="AEH_ogg" resname="Ua">
+        <source>Ua</source>
+        <target>Укр</target>
+      </trans-unit>
+      <trans-unit id="KdlJIlE" resname="Article">
+        <source>Article</source>
+        <target>Статья</target>
+      </trans-unit>
+      <trans-unit id="mcQKtAW" resname="Date">
+        <source>Date</source>
+        <target>Дата</target>
+      </trans-unit>
+      <trans-unit id="j1ZDJgo" resname="To list">
+        <source>To list</source>
+        <target>К списку</target>
+      </trans-unit>
+      <trans-unit id="wcEAnT8" resname="Update">
+        <source>Update</source>
+        <target>Обновить</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Удалить</target>
+      </trans-unit>
+      <trans-unit id="NV958p1" resname="Comments">
+        <source>Comments</source>
+        <target>Комментарии</target>
+      </trans-unit>
+      <trans-unit id="2VCCou5" resname="Author">
+        <source>Author</source>
+        <target>Автор</target>
+      </trans-unit>
+      <trans-unit id="R70pB1_" resname="Content">
+        <source>Content</source>
+        <target>Контент</target>
+      </trans-unit>
+      <trans-unit id="LGF1xUH" resname="no comments found, please leave yore comment">
+        <source>no comments found, please leave yore comment</source>
+        <target>нет комментариев, пожалуйста оставте комментарий</target>
+      </trans-unit>
+      <trans-unit id=".99O3EF" resname="Create article">
+        <source>Create article</source>
+        <target>Создать статью</target>
+      </trans-unit>
+      <trans-unit id="fozSBW2" resname="Title">
+        <source>Title</source>
+        <target>Заголовок</target>
+      </trans-unit>
+      <trans-unit id="px51cyR" resname="Watch">
+        <source>Watch</source>
+        <target>Посмотреть</target>
+      </trans-unit>
+      <trans-unit id="G0mTh0u" resname="no articles found">
+        <source>no articles found</source>
+        <target>нет статей</target>
+      </trans-unit>
+      <trans-unit id="MieqlmY" resname="Browse">
+        <source>Browse</source>
+        <target>Просмотр</target>
+      </trans-unit>
+      <trans-unit id="9_b2f7e" resname="Choose image">
+        <source>Choose image</source>
+        <target>Выберите изображение</target>
+      </trans-unit>
+      <trans-unit id="FQn1YfJ" resname="Save">
+        <source>Save</source>
+        <target>Сохранить</target>
+      </trans-unit>
+      <trans-unit id="EfIsfqc" resname="Update comment">
+        <source>Update comment</source>
+        <target>Обновить комментарий</target>
+      </trans-unit>
+      <trans-unit id="j92Qkut" resname="Update article">
+        <source>Update article</source>
+        <target>Обновить статью</target>
+      </trans-unit>
+      <trans-unit id="HPRKveZ" resname="Create comment">
+        <source>Create comment</source>
+        <target>Создать комментарий</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
