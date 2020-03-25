@@ -57,8 +57,8 @@
         <source>Content</source>
         <target>Контент</target>
       </trans-unit>
-      <trans-unit id="LGF1xUH" resname="no comments found, please leave yore comment">
-        <source>no comments found, please leave yore comment</source>
+      <trans-unit id="LGF1xUH" resname="no comments found, please leave your comment">
+        <source>no comments found, please leave your comment</source>
         <target>нет комментариев, пожалуйста оставте комментарий</target>
       </trans-unit>
       <trans-unit id=".99O3EF" resname="Create article">
