@@ -1,0 +1,64 @@
+# Documentation: https://docs.docker.com/compose
+# Docker from parallels: `docker-machine create --parallels-disk-size=20480 --parallels-memory=4096 --parallels-cpu-count=2 --driver=parallels prl-test`
+# use our parallel docker: `eval $(docker-machine env prl-test)`
+
+version: '3.5'
+
+services:
+  # https://hub.docker.com/_/mysql
+  mysql:
+    image: mysql:5.7
+    hostname: mysql
+    environment:
+      MYSQL_DATABASE: "symfonyapp"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "user"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+    ports:
+      - "3306:3306"
+
+  # https://hub.docker.com/r/phpmyadmin/phpmyadmin/
+  phpmyadmin:
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: ""
+      UPLOAD_LIMIT: 2048M
+
+  # https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-dev.html
+  php-fpm:
+    image: webdevops/php-dev:7.3
+    hostname: php-fpm
+    volumes:
+      - "./app:/app"
+    working_dir: "/app"
+    depends_on:
+      - mysql
+  # https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/nginx.html
+  nginx:
+    image: webdevops/nginx
+    hostname: nginx
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      WEB_DOCUMENT_INDEX: index.php
+      WEB_PHP_SOCKET: php-fpm:9000
+    ports:
+      - "80:80"
+      - "433:433"
+    volumes:
+      - "./app:/app"
+    depends_on:
+      - php-fpm
+
+  # https://hub.docker.com/_/composer
+  composer:
+    restart: "no"
+    image: composer:1.10
+    command: install --ignore-platform-reqs
+    working_dir: /app
+    volumes:
+      - "./app:/app"
