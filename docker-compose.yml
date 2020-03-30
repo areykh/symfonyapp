@@ -38,6 +38,7 @@ services:
     working_dir: "/app"
     depends_on:
       - mysql
+
   # https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/nginx.html
   nginx:
     image: webdevops/nginx
